@@ -1,14 +1,17 @@
 Below is a step-by-step guide on how to SSH into your Virtual Machine (VM) from your host and upload files to GitHub
+=====================================================================================================================
 
 Prerequisites:
+--------------
 
 You should have a Virtual Machine (VM) set up, and it should have SSH access enabled. You need a GitHub account. If you don't have one, you can sign up at GitHub.
 
 Start SSH:
 
-bash
 systemctl start ssh.service
-Step 1: Generate SSH Key (if not already done)
+
+Step 1: Generate SSH Key
+-------------------------
 
 On your local machine, open a terminal. Generate an SSH key pair using the following command, replacing your_email@example.com with your email
 
@@ -17,16 +20,17 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 Press Enter to accept the default location for your SSH key. You may set a passphrase for added security or leave it blank for convenience.
 
 Step 2: Add SSH Key to SSH Agent
+---------------------------------
 
 Start the SSH agent by running the following command: bash
 
-bash
 eval "$(ssh-agent -s)"
 Add your SSH key to the SSH agent
 
-bash
 ssh-add ~/.ssh/id_rsa
+
 Step 3: Copy Your Public SSH Key
+--------------------------------
 
 Display your public SSH key in the terminal
 
@@ -34,22 +38,25 @@ cat ~/.ssh/id_rsa.pub
 Copy the entire output, which is your public key.
 
 Step 4: Add SSH Key to GitHub
+------------------------------
 
 Log in to your GitHub account. Click on your profile picture in the top-right corner and go to "Settings." In the left sidebar, click on "SSH and GPG keys." Click on the "New SSH key" button. Give your SSH key a title (e.g., "My VM Key"). Paste the public key you copied in Step 3 into the "Key" field. Click "Add SSH key."
 
 Step 5: SSH into Your VM
+-------------------------
 
 Open a terminal on your host machine. Use the ssh command to connect to your VM, replacing and <vm_ip> with your VM's username and IP address.
 
-bash
 ssh <username>@<vm_ip>
 If it's your first time connecting, you may be prompted to accept the server's fingerprint. Type "yes" to continue. Enter your VM's password when prompted.
 
 Step 6: Clone or Create a GitHub Repository
+--------------------------------------------
 
 Once connected to your VM via SSH, navigate to the directory where you want to work with your GitHub repository. You can either clone an existing GitHub repository using git clone <repository_url> or create a new one using git init.
 
 Step 7: Add, Commit, and Push Your Files
+-----------------------------------------
 
 Add your files to the repository, commit them, and push to GitHub. Here are the commands
 
