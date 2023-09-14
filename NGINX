@@ -1,4 +1,4 @@
-#The basics of installing and configuring Nginx on a Linux-based system.
+# The basics of installing and configuring Nginx on a Linux-based system.
 
 Prerequisites
 Before you begin, make sure you have the following:
@@ -7,25 +7,25 @@ A Linux-based server (e.g., Ubuntu, CentOS, Debian).
 SSH access to your server with sudo privileges.
 A domain name pointing to your server's IP address (optional for setting up virtual hosts).
 
-#Step 1: Update Your System
+# Step 1: Update Your System
 Start by updating the package list and upgrading installed packages to their latest versions:
 
 sudo apt update && sudo apt upgrade   # For Ubuntu/Debian
 # OR
 sudo yum update                      # For CentOS
 
-#Step 2: Install Nginx
+# Step 2: Install Nginx
 You can install Nginx using your distribution's package manager. Here are the commands for different Linux distributions:
 
 Ubuntu/Debian:sudo apt install nginx
 CentOS:sudo yum install nginx
 
-#Step 3: Start and Enable Nginx
+# Step 3: Start and Enable Nginx
 Once Nginx is installed, start it and enable it to start automatically on boot:
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
-#Step 4: Configure Nginx
+# Step 4: Configure Nginx
 Nginx's main configuration file is located at /etc/nginx/nginx.conf. However, you'll primarily work with configuration files found in the /etc/nginx/sites-available/ and /etc/nginx/sites-enabled/ directories. These files define server blocks, also known as virtual hosts, for your websites.
 
 Default Server Block
@@ -63,12 +63,12 @@ Before restarting Nginx, it's a good practice to check your configuration for sy
 sudo nginx -t
 If you receive an "OK" message, it means your configuration is valid.
 
-#Step 5: Reload Nginx
+# Step 5: Reload Nginx
 To apply your changes, reload Nginx:
 
 sudo systemctl reload nginx
 
-#Step 6: Firewall Configuration (if needed)
+# Step 6: Firewall Configuration (if needed)
 If you have a firewall (e.g., UFW, firewalld) enabled on your server, make sure to allow HTTP (port 80) and HTTPS (port 443) traffic:
 
 # For UFW (Ubuntu/Debian)
@@ -79,7 +79,7 @@ sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
 
-#Step 7: Testing
+# Step 7: Testing
 Now, you can test your Nginx setup by opening a web browser and navigating to your server's IP address or domain name. You should see either the default Nginx welcome page or your website if you configured a custom server block.
 
 Congratulations! You've successfully installed and configured Nginx on your Linux server. You can further customize your Nginx configuration to meet your specific needs, such as setting up SSL/TLS, load balancing, or proxying requests to backend applications.
