@@ -1,0 +1,92 @@
+Nmap (Network Mapper) is a powerful open-source network scanning tool that is widely used by network administrators, security professionals, and ethical hackers to discover hosts and services on a computer network and gather information about them. Nmap has a plethora of options and switches that provide various functionalities and customization. In this tutorial, I'll explain the basics of how to use Nmap, its different switches, and what they mean.
+
+Installing Nmap
+Before you start using Nmap, you need to install it on your system. Nmap is available for various operating systems, including Windows, Linux, and macOS. You can download the latest version from the official website: https://nmap.org/download.html.
+
+Once installed, you can run Nmap from the command line. Let's dive into some common Nmap scanning techniques and switches:
+
+Basic Nmap Scanning Syntax
+The basic syntax for running Nmap is as follows:
+
+nmap [Scan Type] [Options] [Target(s)]
+Here's what each part means:
+
+Scan Type: This specifies the type of scan you want to perform. Common scan types include:
+
+-sS: TCP SYN scan (default)
+-sT: TCP connect scan
+-sU: UDP scan
+-sF: FIN scan
+-sX: Xmas scan
+-sA: ACK scan
+Options: These are various switches that modify the scan behavior. Some common options include:
+
+-p: Specifies the port range to scan (e.g., -p 1-100 scans ports 1 through 100).
+-T: Sets the scan speed or timing template (e.g., -T4 for aggressive scanning).
+-O: Enables OS detection.
+-v: Increases verbosity (use multiple times for more detail).
+-A: Enables OS detection, version detection, script scanning, and traceroute.
+-oN: Saves the scan results to a file in normal format.
+-oX: Saves the scan results to an XML file.
+Target(s): Specifies the target host(s) or network(s) to scan. You can provide IP addresses, hostnames, or even entire subnets.
+
+Common Nmap Scanning Techniques
+Now, let's explore some common scanning techniques and the corresponding Nmap switches:
+
+TCP SYN Scan (-sS):
+
+Command: nmap -sS [Target]
+Description: This is the default scan type in Nmap. It sends SYN packets to the target's ports and analyzes the responses to determine open, closed, or filtered ports.
+TCP Connect Scan (-sT):
+
+Command: nmap -sT [Target]
+Description: This scan establishes a full TCP connection to the target's ports, making it more reliable but also more easily detectable.
+UDP Scan (-sU):
+
+Command: nmap -sU [Target]
+Description: This scan sends UDP packets to the target's ports to discover open UDP services. UDP scans are slower and less reliable than TCP scans.
+Operating System Detection (-O):
+
+Command: nmap -O [Target]
+Description: This switch attempts to identify the target's operating system based on various network stack behaviors and responses.
+Port Range (-p):
+
+Command: nmap -p [Port Range] [Target]
+Description: Use this switch to specify a range of ports to scan. For example, -p 1-100 scans ports 1 through 100.
+Timing Templates (-T):
+
+Command: nmap -T[0-5] [Target]
+Description: Adjusts the scan timing template to control scan speed and aggressiveness. Options range from -T0 (paranoid) to -T5 (insane).
+Verbose Output (-v):
+
+Command: nmap -v [Target]
+Description: Increases the verbosity of the output to provide more detailed information about the scan.
+Save Results to File (-oN and -oX):
+
+Command: nmap -oN [Output File] [Target] or nmap -oX [Output File] [Target]
+Description: Saves the scan results to a file in normal text format (-oN) or XML format (-oX).
+Aggressive Scan (-A):
+
+Command: nmap -A [Target]
+Description: Enables a set of aggressive scan options, including OS detection, version detection, script scanning, and traceroute.
+Examples
+
+Here are some practical examples of Nmap scans:
+
+Scan the top 1000 TCP ports on a target:
+
+nmap -p 1-1000 [Target]
+Perform an aggressive scan with OS detection:
+
+
+nmap -A [Target]
+Scan a range of hosts in a subnet and save the results to a file:
+
+
+nmap -oN scan_results.txt 192.168.1.1-254
+Scan a host using TCP connect scan and set the scan speed to maximum:
+
+
+nmap -sT -T5 [Target]
+Conclusion
+Nmap is a versatile tool that offers a wide range of scanning options and capabilities. The examples and explanations provided in this tutorial should help you get started with Nmap and understand its various switches and scanning techniques. However, always use Nmap responsibly and ensure you have the necessary permissions to scan a network, as unauthorized scanning can be illegal and unethical.
